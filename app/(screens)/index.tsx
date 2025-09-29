@@ -1,9 +1,11 @@
 import { Stack } from "expo-router";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import Welcome from "@/components/Welcome";
+import NearbyJobs from "@/components/NearbyJobs";
+import PopularJobs from "@/components/PopularJobs";
 import ScreenHeaderBtn from "@/components/ScreenHeaderBtn";
+import Welcome from "@/components/Welcome";
 
 export default function Index() {
   return (
@@ -27,7 +29,11 @@ export default function Index() {
       />
 
       <ScrollView className="px-6 -mt-6">
-       <Welcome/>
+        <View className="flex gap-3">
+          <Welcome />
+          <PopularJobs />
+          <NearbyJobs />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
