@@ -28,11 +28,11 @@ export default function Index() {
         }}
       />
 
-      <ScrollView className="px-6 -mt-6">
+      <ScrollView className="px-6 -mt-6" showsVerticalScrollIndicator={false}>
         <View className="flex gap-3">
           <Welcome />
           <PopularJobs />
-          <NearbyJobs />
+          <NearbyJobs size={ true} title="Nearby Jobs"/>
         </View>
       </ScrollView>
     </SafeAreaView>
