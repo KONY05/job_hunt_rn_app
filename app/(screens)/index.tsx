@@ -1,8 +1,9 @@
-import ScreenHeaderBtn from "@/components/ScreenHeaderBtn";
-import Welcome from "@/components/Welcome";
 import { Stack } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import Welcome from "@/components/Welcome";
+import ScreenHeaderBtn from "@/components/ScreenHeaderBtn";
 
 export default function Index() {
   return (
