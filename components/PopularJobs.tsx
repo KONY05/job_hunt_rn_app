@@ -1,6 +1,7 @@
-import { jobs } from "@/utils/constants";
 import { useRouter } from "expo-router";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+
+import { jobs } from "@/utils/constants";
 
 export default function PopularJobs() {
   const router = useRouter();
@@ -31,7 +32,7 @@ export default function PopularJobs() {
           <TouchableOpacity
             className="bg-gray-100 rounded-md p-4 shadow-slate-400 min-w-[200px]"
             onPress={() => {
-              router.push(`/(screens)/search/${item.job_id}`);
+              router.push(`/(screens)/job-details/${item.job_id}`);
             }}
           >
             <Image

@@ -1,6 +1,7 @@
-import { jobs } from "@/utils/constants";
 import { useRouter } from "expo-router";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+
+import { jobs } from "@/utils/constants";
 
 export default function NearbyJobs({
   size,
@@ -15,28 +16,6 @@ export default function NearbyJobs({
   //     num_pages: 1,
   //     country: "ngn",
   //   });
-
-  console.log(
-    title
-      .replace("-", " ")
-      .replace("Jobs", "")
-      .split(" ")
-      .splice(0, 2)
-      .join(" ")
-  );
-
-  console.log(
-    jobs.filter(
-      (job) =>
-        job.job_employment_type ===
-        title
-          .replace("-", " ")
-          .replace(" Jobs", "")
-          .split(" ")
-          .splice(0, 2)
-          .join(" ")
-    )
-  );
 
   return (
     <View>
@@ -58,20 +37,22 @@ export default function NearbyJobs({
             : jobs.filter(
                 (job) =>
                   job.job_employment_type ===
-                  title
-                    .replace("-", " ")
-                    .replace(" Jobs", "")
-                    .split(" ")
-                    .splice(0, 2)
-                    .join(" ")
-                    .replace("or", "") // for contractor to contract
+                    title
+                      .replace("-", " ")
+                      .replace(" Jobs", "")
+                      .split(" ")
+                      .splice(0, 2)
+                      .join(" ")
+                      .replace("or", "") ||
+                  job.job_title?.includes(title.replace(" Jobs", "")) ||
+                  job.employer_name === title.replace(" Jobs", "") // for contractor to contract
               )
         }
         renderItem={({ item }) => (
           <TouchableOpacity
             className="bg-gray-100 rounded-md p-4 shadow-slate-400"
             onPress={() => {
-              router.push(`/(screens)/search/${item.job_id}`);
+              router.push(`/(screens)/job-details/${item.job_id}`);
             }}
           >
             <Image
