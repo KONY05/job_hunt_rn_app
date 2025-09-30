@@ -2,10 +2,11 @@ import { Stack } from "expo-router";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import NearbyJobs from "@/components/NearbyJobs";
+import JobListing from "@/components/JobListing";
 import PopularJobs from "@/components/PopularJobs";
 import ScreenHeaderBtn from "@/components/ScreenHeaderBtn";
 import Welcome from "@/components/Welcome";
+import { jobs } from "@/utils/constants";
 
 export default function Index() {
   return (
@@ -32,7 +33,7 @@ export default function Index() {
         <View className="flex gap-3">
           <Welcome />
           <PopularJobs />
-          <NearbyJobs size={ true} title="Nearby Jobs"/>
+          <JobListing data={jobs.slice(10, 30)} title="Nearby Jobs" />
         </View>
       </ScrollView>
     </SafeAreaView>

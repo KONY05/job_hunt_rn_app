@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 
+import HeaderText from "./HeaderText";
 import SearchBar from "./SearchBar";
 
 const job_types = ["Full-time", "Part-time", "Contractor", "Intern"];
@@ -11,15 +12,9 @@ export default function Welcome() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState(job_types[0]);
 
-
   return (
     <View>
-      <View className="flex gap-y-2 mb-6 bg-blue-600 rounded-xl p-5 ">
-        <Text className="font-semibold text-2xl text-white">Hello, User</Text>
-        <Text className="font-medium text-gray-300">
-          Find your next dream job 👨‍💼
-        </Text>
-      </View>
+      <HeaderText text="Find your next dream job 👨‍💼" />
 
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
@@ -28,13 +23,16 @@ export default function Welcome() {
           data={job_types}
           renderItem={({ item, index }) => {
             const isActive = item === activeTab;
-            
+
             return (
               <TouchableOpacity
                 className={`p-2 rounded-xl ${isActive && "bg-blue-600"}`}
                 onPress={() => {
                   setActiveTab(job_types[index]);
-                  router.push({pathname: "/(screens)/search/[id]", params: {id: item}});
+                  router.push({
+                    pathname: "/(screens)/search/[id]",
+                    params: { id: item },
+                  });
                 }}
               >
                 <Text className={`font-medium ${isActive && "text-white"}`}>
