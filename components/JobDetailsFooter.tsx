@@ -1,60 +1,22 @@
+import { useFavorite } from "@/context/FavoritesContext";
 import { Ionicons } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useCallback, useEffect, useState } from "react";
-import { Alert, Text, TouchableOpacity, View } from "react-native";
+import { useEffect, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 
 export default function JobDetailsFooter({ job_id }: { job_id: string }) {
   const [favorite, setFavorite] = useState(false);
 
-  const getFavoriteJobs = useCallback(async (): Promise<{
-    alreadySaved: boolean;
-    existingIds: string[];
-  }> => {
-    try {
-      const existingRaw = await AsyncStorage.getItem("favoriteJobs");
-      const existingIds: string[] = existingRaw ? JSON.parse(existingRaw) : [];
-      const alreadySaved = existingIds.includes(job_id);
-      return { alreadySaved, existingIds };
-    } catch (error) {
-      const err =
-        error instanceof Error
-          ? error.message
-          : "An error occurred getting your favorite Jobs";
-      Alert.alert("Error", err);
-      return { alreadySaved: false, existingIds: [] };
-    }
-  }, [job_id]);
+  const { favoriteJobIds, handleFavorites } = useFavorite();
 
   useEffect(() => {
-    async function handleGetFavoriteJobs() {
-      const { alreadySaved } = await getFavoriteJobs();
+    async function handleGetAlreadySaved() {
+      const alreadySaved = favoriteJobIds.includes(job_id);
 
       if (alreadySaved) return setFavorite(true);
     }
 
-    handleGetFavoriteJobs();
-  }, [job_id, getFavoriteJobs]);
-
-  async function handleFavoritesBtnClick() {
-    try {
-      const { alreadySaved, existingIds } = await getFavoriteJobs();
-
-      if (!alreadySaved) {
-        const updatedIds = [...existingIds, job_id];
-
-        await AsyncStorage.setItem("favoriteJobs", JSON.stringify(updatedIds));
-      } else {
-        const updatedIds = existingIds.filter((id) => id !== job_id);
-        await AsyncStorage.setItem("favoriteJobs", JSON.stringify(updatedIds));
-      }
-    } catch (error) {
-      const err =
-        error instanceof Error
-          ? error.message
-          : "An error occurred handling the favorites functionality";
-      Alert.alert("Error", err);
-    }
-  }
+    handleGetAlreadySaved();
+  }, [job_id, favoriteJobIds]);
 
   // (async function () {
   //   const k = await AsyncStorage.getItem("favoriteJobs");
@@ -66,7 +28,7 @@ export default function JobDetailsFooter({ job_id }: { job_id: string }) {
     <View className="flex flex-row items-center absolute bottom-8 z-10 left-5 justify-center">
       <TouchableOpacity
         onPress={async () => {
-          await handleFavoritesBtnClick();
+          await handleFavorites(job_id);
           setFavorite(!favorite);
         }}
       >

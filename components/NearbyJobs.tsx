@@ -19,7 +19,7 @@ export default function NearbyJobs({
 
   return (
     <View>
-      <Text className="font-bold text-xl"> {title}</Text>
+      <Text className="font-bold text-xl">{title}</Text>
 
       {/* {isLoading && <ActivityIndicator size={24} color={"grey"} />} */}
 
