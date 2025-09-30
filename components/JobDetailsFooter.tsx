@@ -40,7 +40,7 @@ export default function JobDetailsFooter({ job_id }: { job_id: string }) {
         />
       </TouchableOpacity>
 
-      <TouchableOpacity className="rounded-xl p-3 bg-blue-400 flex-1">
+      <TouchableOpacity className="rounded-xl p-3 bg-blue-600 flex-1">
         <Text className=" font-bold text-[16px] text-white">Apply for Job</Text>
       </TouchableOpacity>
     </View>

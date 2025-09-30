@@ -14,8 +14,6 @@ export default function Favorites() {
   const favoriteJobs = jobs.filter((job) =>
     favoriteJobIds.includes(job.job_id)
   );
-  
-
 
   return (
     <SafeAreaView className="bg-[#FAFAFC] flex-1">
