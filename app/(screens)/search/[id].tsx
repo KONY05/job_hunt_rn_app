@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import JobListing from "@/components/JobListing";
@@ -17,8 +17,6 @@ export default function Search() {
       job.employer_name?.includes(params.id) // for contractor to contract
   );
 
-  // if (params.id === "") return <View><Text>Query Empty</Text></View>
-
   return (
     <SafeAreaView className="flex-1 bg-[#FAFAFC]">
       <Stack.Screen
@@ -34,7 +32,7 @@ export default function Search() {
       />
 
       <ScrollView className="px-6 -mt-8" showsVerticalScrollIndicator={false}>
-        <JobListing data={query} title={`${params.id} Jobs`} />
+        <JobListing data={query} title={`(${query.length}) ${params.id} Jobs Found`} />
       </ScrollView>
     </SafeAreaView>
   );
