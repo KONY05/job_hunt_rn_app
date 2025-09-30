@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { ScrollView } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import JobListing from "@/components/JobListing";
@@ -17,13 +17,15 @@ export default function Search() {
       job.employer_name?.includes(params.id) // for contractor to contract
   );
 
+  // if (params.id === "") return <View><Text>Query Empty</Text></View>
+
   return (
     <SafeAreaView className="flex-1 bg-[#FAFAFC]">
       <Stack.Screen
         options={{
           headerBackVisible: false,
           headerLeft: () => (
-            <ScreenHeaderBtn icon="arrow-back" linkTo={"/(screens)"} />
+            <ScreenHeaderBtn icon="arrow-back" linkTo={null} />
           ),
           headerStyle: { backgroundColor: "#FAFAFC" },
           headerShadowVisible: false,

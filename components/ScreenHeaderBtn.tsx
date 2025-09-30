@@ -14,10 +14,10 @@ export default function ScreenHeaderBtn({
 
   const { favoriteJobIds } = useFavorite();
 
-  const favoritePresent = favoriteJobIds && icon === "heart-outline";
+  const favoritePresent = favoriteJobIds.length > 0 && icon === "heart-outline";
 
   return (
-    <TouchableOpacity onPress={() => (linkTo ? router.push(linkTo) : null)}>
+    <TouchableOpacity onPress={() => (linkTo ? router.push(linkTo) : router.back())}>
       <Ionicons
         name={favoritePresent ? "heart" : icon}
         size={26}

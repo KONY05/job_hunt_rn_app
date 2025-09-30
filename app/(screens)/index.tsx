@@ -15,7 +15,7 @@ export default function Index() {
         options={{
           headerBackVisible: false,
           headerRight: () => (
-            <ScreenHeaderBtn icon="person-outline" linkTo={null} />
+            <ScreenHeaderBtn icon="person-outline" linkTo={"/"} />
           ),
           headerLeft: () => (
             <ScreenHeaderBtn

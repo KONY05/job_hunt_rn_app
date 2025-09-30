@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 
 import { Job } from "@/utils/types";
+import EmptyData from "./EmptyData";
 
 export default function JobContainer({ data }: { data: Job[] }) {
   const router = useRouter();
@@ -48,6 +49,7 @@ export default function JobContainer({ data }: { data: Job[] }) {
       )}
       scrollEnabled={false}
       contentContainerClassName="flex gap-4"
+      ListEmptyComponent={<EmptyData/>}
     />
   );
 }

@@ -20,7 +20,7 @@ export default function Job_Details() {
         options={{
           headerBackVisible: false,
           headerLeft: () => (
-            <ScreenHeaderBtn icon="arrow-back" linkTo={"/(screens)"} />
+            <ScreenHeaderBtn icon="arrow-back" linkTo={null} />
           ),
           headerStyle: { backgroundColor: "#FAFAFC" },
           headerShadowVisible: false,

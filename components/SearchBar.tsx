@@ -20,13 +20,13 @@ export default function SearchBar({
         className="placeholder::font-semibold py-3  font-medium flex-1"
       />
 
-      <View className="justify-center items-center">
+      {searchTerm && <View className="justify-center items-center">
         <TouchableOpacity
           onPress={() => router.push(`/(screens)/search/${searchTerm}`)}
         >
           <Ionicons name={"search"} size={26} color="black" />
         </TouchableOpacity>
-      </View>
+      </View>}
     </View>
   );
 }

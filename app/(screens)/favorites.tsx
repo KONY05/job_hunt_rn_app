@@ -20,7 +20,12 @@ export default function Favorites() {
       <Stack.Screen
         options={{
           headerLeft: () => {
-            return <ScreenHeaderBtn icon="arrow-back" linkTo="/(screens)" />;
+            return (
+              <ScreenHeaderBtn
+                icon="arrow-back"
+                linkTo={null}
+              />
+            );
           },
           headerBackVisible: false,
           headerTitle: "",
