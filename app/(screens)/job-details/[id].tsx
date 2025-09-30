@@ -12,10 +12,10 @@ export default function Job_Details() {
 
   const job = jobs.find((data) => data.job_id === params.id);
 
-  console.log(job);
+  // console.log(job);
 
   return (
-    <SafeAreaView className="flex-1 bg-[#FAFAFC] mb-10 px-6">
+    <SafeAreaView className="flex-1 bg-[#FAFAFC] px-6">
       <Stack.Screen
         options={{
           headerBackVisible: false,
