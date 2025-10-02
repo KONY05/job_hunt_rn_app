@@ -14,7 +14,7 @@ export default function Search() {
       job.job_employment_type ===
         params.id.replace("-", " ").replace("or", "") ||
       job.job_title?.includes(params.id) ||
-      job.employer_name?.includes(params.id) // for contractor to contract
+      job.employer_name?.includes(params.id)
   );
 
   return (

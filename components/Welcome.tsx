@@ -5,7 +5,7 @@ import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import HeaderText from "./HeaderText";
 import SearchBar from "./SearchBar";
 
-const job_types = ["Full-time", "Part-time", "Contractor", "Intern"];
+const job_types = ["All", "Full-time", "Part-time", "Contractor", "Intern"];
 
 export default function Welcome() {
   const router = useRouter();
@@ -29,10 +29,14 @@ export default function Welcome() {
                 className={`p-2 rounded-xl ${isActive && "bg-blue-600"}`}
                 onPress={() => {
                   setActiveTab(job_types[index]);
-                  router.push({
-                    pathname: "/(screens)/search/[id]",
-                    params: { id: item },
-                  });
+                  if (item === "All") {
+                    router.push("/");
+                  } else {
+                    router.push({
+                      pathname: "/(screens)/search/[id]",
+                      params: { id: item },
+                    });
+                  }
                 }}
               >
                 <Text className={`font-medium ${isActive && "text-white"}`}>

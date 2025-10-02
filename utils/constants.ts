@@ -221,7 +221,6 @@ export const jobs: Job[] = [
     job_description:
       "Prototype and productionize cutting-edge AI systems with robust safety tooling.",
   },
-  // Additional Part time and Intern roles
   {
     job_id: "JOB-0021",
     employer_logo: "https://logo.clearbit.com/nintendo.com",
